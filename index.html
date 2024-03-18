@@ -2,59 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="error404" content="width=device-width, initial-scale=1.0">
-    <meta name="error404Page" content="error404"/>
-
-    <title>Error404 </title>
-
-
+    <meta https-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix rain animation with message</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="custom.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 
 <style>
 
-    body
-    {
-        /*background: url('https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/2023-02/Gorillaz_0.jpg.webp?itok=x_hw9SyA655730095');*/
-        background-color: rgba(33,55,88,0.9);
-        background-blend-mode: lighten;
-
-        color:rgba(125 ,181, 215, 0.7);
-        font-size: 2rem ;
-        border: 4px solid rgba(35,66,99,0.8);
-        /*padding: 10%;*/
-        margin: 10%;
-        text-align: center;
-        position: relative;
-        /*display: flex;*/
+    *{
+        padding: 0;
+        margin: 0;
+        font-family: 'IBM Plex Sans', sans-serif;
     }
-    body h1
-    {
-        /*border:5px solid rgba(33,29,100,0.8) ;*/
-        /*width:100% ;*/
-        /*display: inline-block;*/
-        /*   position: absolute;*/
-        background: darkblue;
+
+    html, body {
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: 100;
+        background: #000;
+        width: 100%;
+        height: 100%;
+        color: #10d210;
         overflow: hidden;
-
     }
-
-    canvas {display: block;}
-
-    /*body h2*/
-    /*{*/
-    /*    border:5px solid rgba(0, 255, 16, 0.8);*/
-
-
-    /*}*/
-
-
-
-
-
-
-
+    body .content {
+        position: absolute !important;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    .random {
+        max-width: 500px;
+        margin: auto;
+        border: 2px solid;
+        padding: 15px;
+    }
+    .random > span {
+        width: 30px;
+        display: inline-block;
+    }
+    .mask {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .mask > img {
+        filter: opacity(0.6) brightness(0.1);
+        width: 100%;
+        max-width: 680px;
+        margin: auto;
+    }
 
 </style>
 
@@ -62,55 +71,28 @@
 
 
 
-<canvas>
 
-</canvas>
-<div id="counter" style="color: darkblue ;" >
-    <p>
-        Present time :
-    </p>
-
-    <p id="current-time"></p>
+<div class="mask"> <img src="anonymous_mask.png"> </div>
+<canvas id="matrix"></canvas>
+<div class="content">
+    <div class="random">
+        <!-- Here text wich you want to add in counter -->
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+        <span class="str ltr">0</span>
+    </div>
 </div>
-
-
-
-
-<h1>
-    設計理念Inspiration
-</h1>
-
-參照電影  <a href="https://youtu.be/9ix7TUGVYIo?si=8uCiI_JzksbRc1E3" style="text-decoration: none ; list-style-type: none  ; color: darkgray " >  <駭客任務 THE MATRIX> </a>   中的代碼/機器語言都是以 綠色 出現  <br>
-  在結合 託管原始碼/版控的GitHub  <br>
-    以網頁 技術問題 顯示404 作為方向 <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>
-
-<a href="https://www.youtube.com/watch?v=u7JMhVI7taQ ; " style="text-decoration: none ;color: darkgray "  >    Hello world  </a>
-
-<!--    <a href="https://www.youtube.com/watch?v=1V_xRb0x9aw" style="text-decoration: none ; color:rgba(141,141,141,0.83) "  >Easttttttt</a>-->
-
-
-</p>
-
-
-
-
-
-
-
 
 
 
@@ -119,28 +101,97 @@
 
 
 <script>
-    function updateTime() {
-        // Get current time
-        var currentTime = new Date();
-        // Format time as desired, for example: HH:MM:SS
-        var formattedTime = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
-        // Update the content of the HTML element
-        document.getElementById('current-time').innerHTML = formattedTime;
+
+    window.addEventListener("load", eventWindowLoaded, false);
+    function eventWindowLoaded() {
+        canvasApp();
     }
-    // Call the function once to display time immediately
-    updateTime();
-    // Update time every second (1000 milliseconds)
-    setInterval(updateTime, 1000);
+    function canvasSupport(e) {
+        return !!e.getContext;
+    }
+
+    function canvasApp() {
+        var canvas = document.getElementById("matrix");
+
+        if (!canvasSupport(matrix)) {
+            return;
+        }
+
+        var ctx = canvas.getContext("2d");
+        var w = (canvas.width = window.innerWidth);
+        var h = (canvas.height = window.innerHeight);
+        var yPosition = Array(300).join(0).split("");
+
+
+        function runMatrix() {
+            if (typeof Game_Interval != "undefined") clearInterval(Game_Interval);
+            Game_Interval = setInterval(drawScreen, 33)
+        }
+
+        function drawScreen() {
+            ctx.fillStyle = "rgba(0,0,0,.06)";
+            ctx.fillRect(0, 0, w, h);
+            ctx.fillStyle = "#0f0";
+            ctx.font = "15px IBM Plex Sans";
+            yPosition.map(function(y, index) {
+                text = String.fromCharCode(1e2 + Math.random() * 33);
+                x = index * 10 + 10;
+                ctx.fillText(text, x, y);
+                if (y > 100 + Math.random() * 1e4) {
+                    yPosition[index] = 0;
+                }else {
+                    yPosition[index] = y + 10;
+                }
+            });
+        }
+        runMatrix();
+    }
 
 
 
 
+    $(document).ready(function(){
+        var $randomString = $(".str");
+        var $timer = 30;
+        var $it;
+        var $data = 0;
+        var $index;
+        var $change;
+        var $letters = ["y","o","u"," ","A","r","e"," ","H","a","c","k","e","d"];
+        //var $letters = ["S","t","a","c","k","f","i","n","d","o","v","e","r"];
 
+        $randomString.each(function(){
+            $change = Math.round(Math.random()*100);
+            $(this).attr('data-change', $change)
+        });
 
+        function random(){
+            return Math.round(Math.random()*9);
+        }
+        function select(){
+            return Math.round(Math.random()*$randomString.length+1);
+        }
 
+        function value(){
+            $(".str:nth-child("+select()+")").html(''+random()+'');
+            $(".str:nth-child("+select()+")").attr('data-number', $data);
+            $data++;
+
+            $randomString.each(function(){
+                if (parseInt($(this).attr('data-number')) > parseInt($(this).attr('data-change')) ) {
+                    $index = $('.ltr').index(this);
+                    $(this).html($letters[$index]);
+                    $(this).removeClass('str');
+                }
+            });
+
+        };
+
+        $it = setInterval(value, $timer);
+
+    });
 
 </script>
-
 
 
 
