@@ -2,95 +2,133 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta https-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix rain animation with message</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="custom.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <!--    <link rel="stylesheet" href="./styles.css">-->
+    <title>  Err0r 4o4 Description  </title>
 
+
+    <!--    CDN import-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+
+
+
+</head>
 
 <style>
 
-    *{
-        padding: 0;
-        margin: 0;
-        font-family: 'IBM Plex Sans', sans-serif;
-    }
-
-    html, body {
-        font-size: 24px;
-        text-transform: uppercase;
-        font-weight: 100;
-        background: #000;
-        width: 100%;
+    html {
+        background: black;
         height: 100%;
-        color: #10d210;
         overflow: hidden;
     }
-    body .content {
-        position: absolute !important;
-        top: 50%;
-        left: 50%;
-        text-align: center;
-        transform: translateX(-50%) translateY(-50%);
+
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        /*color: #10d210;*/
+
+
+
+        /*Traditional ChinesefontSet */
+        font-family: "Noto Sans TC", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+
     }
-    .random {
-        max-width: 500px;
-        margin: auto;
-        border: 2px solid;
-        padding: 15px;
+
+
+    /* Color of the text - you can change it as you need. */
+
+    div {
+        color: red;
+
     }
-    .random > span {
-        width: 30px;
-        display: inline-block;
-    }
-    .mask {
+
+
+    /* These are the properties applied to div that has the "innerDiv" class - you can change it as you need. */
+
+    .innerDiv {
         position: absolute;
-        left: 0;
-        right: 0;
-        width: 100%;
-        text-align: center;
-        display: flex;
+
+        /*left: 25%;*/
+
+        top: 10px;
+        background-color: rgba(56, 56, 56, 0.77);
+        font-size: x-large;
+        color: rgba(127, 255, 0, 0.84);
+
+        align-content: center;
         align-items: center;
-        justify-content: center;
+        text-align: center;
+
+        /*margin:0 ;*/
+
+
     }
-    .mask > img {
-        filter: opacity(0.6) brightness(0.1);
-        width: 100%;
-        max-width: 680px;
-        margin: auto;
-    }
+
+
 
 </style>
 
 
 
+<body style="background-color: #1e1e1e">
+
+
+<!--<canvas id="Matrix" style="width: 100%; height: 100%;"></canvas>-->
+<!--<script src="./index.js"></script>-->
 
 
 
-<div class="mask"> <img src="anonymous_mask.png"> </div>
-<canvas id="matrix"></canvas>
-<div class="content">
-    <div class="random">
-        <!-- Here text wich you want to add in counter -->
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
-        <span class="str ltr">0</span>
+
+
+
+
+<canvas id="Matrix" style="width: 100%; height: 100%; "></canvas>
+
+<div id="wrapper"  >
+    <div class="innerDiv">
+
+
+        <!--        add current time-->
+        <div id="counter" style="color: rgba(127, 255, 0, 0.84); text-align: center ;" >
+            <p>
+                現在時間 PRESENT TIME :
+            </p>
+            <p id="current-time"></p>
+        </div>
+
+
+
+
+        <span style="font-size: xx-large ; color: rgba(10,236,16,0.92) ; text-shadow: 2px 3px 5px "> 設計理念Inspiration</span>
+        <br/>
+        <p>
+
+            參照電影  <a href="https://youtu.be/9ix7TUGVYIo?si=8uCiI_JzksbRc1E3" style="text-decoration: none ; list-style-type: none  ; color:rgba(75,229,78,0.92);text-shadow: 2px 3px 3px " >  <駭客任務 THE MATRIX> </a>   中的代碼/機器語言都是以 綠色 出現  <br>
+            在結合 託管原始碼/版控的GitHub  <br>
+            以網頁 技術問題 錯誤404 作為方向 <br>
+
+            <br>
+            In the movie <a href="https://youtu.be/9ix7TUGVYIo?si=8uCiI_JzksbRc1E3" style="text-decoration: none ; list-style-type: none  ; color:rgba(75,229,78,0.92);text-shadow: 2px 3px 3px " >THE MATRIX</a> there are some scene that demonstrate the codes which  indicates  code in color green ,in order to combine the element of matrix with GitHub ,setting GitHub 404error technical issue pages as development goal;
+
+        <hr style="border-color: #00c000">
+        網頁物件中加入彩蛋與互動式動畫目的是為了提高網頁可玩性
+        <br>
+        In order to increase the joy of viewing the 404 pages,fragments of easter eggs and scroll-up and down transitiong has added
+
+
+
+
+        <!--            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor-->
+        <!--            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.-->
+
+        </p>
     </div>
 </div>
 
@@ -100,105 +138,81 @@
 
 
 
+
+
+
+
+
+
 <script>
 
-    window.addEventListener("load", eventWindowLoaded, false);
-    function eventWindowLoaded() {
-        canvasApp();
-    }
-    function canvasSupport(e) {
-        return !!e.getContext;
-    }
 
-    function canvasApp() {
-        var canvas = document.getElementById("matrix");
+    //matrix function
+    const canvas = document.getElementById('Matrix');
+    const context = canvas.getContext('2d');
 
-        if (!canvasSupport(matrix)) {
-            return;
-        }
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-        var ctx = canvas.getContext("2d");
-        var w = (canvas.width = window.innerWidth);
-        var h = (canvas.height = window.innerHeight);
-        var yPosition = Array(300).join(0).split("");
+    const katakana = '011010101101011000101';
+    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const nums = '0123456789';
 
+    const alphabet = katakana + latin + nums;
 
-        function runMatrix() {
-            if (typeof Game_Interval != "undefined") clearInterval(Game_Interval);
-            Game_Interval = setInterval(drawScreen, 33)
-        }
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
 
-        function drawScreen() {
-            ctx.fillStyle = "rgba(0,0,0,.06)";
-            ctx.fillRect(0, 0, w, h);
-            ctx.fillStyle = "#0f0";
-            ctx.font = "15px IBM Plex Sans";
-            yPosition.map(function(y, index) {
-                text = String.fromCharCode(1e2 + Math.random() * 33);
-                x = index * 10 + 10;
-                ctx.fillText(text, x, y);
-                if (y > 100 + Math.random() * 1e4) {
-                    yPosition[index] = 0;
-                }else {
-                    yPosition[index] = y + 10;
-                }
-            });
-        }
-        runMatrix();
+    const rainDrops = [];
+
+    for (let x = 0; x < columns; x++) {
+        rainDrops[x] = 1;
     }
 
+    const draw = () => {
+        context.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        context.fillRect(0, 0, canvas.width, canvas.height);
 
+        context.fillStyle = '#0F0';
+        context.font = fontSize + 'px monospace';
 
+        for (let i = 0; i < rainDrops.length; i++) {
+            const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+            context.fillText(text, i * fontSize, rainDrops[i] * fontSize);
 
-    $(document).ready(function(){
-        var $randomString = $(".str");
-        var $timer = 30;
-        var $it;
-        var $data = 0;
-        var $index;
-        var $change;
-        var $letters = ["y","o","u"," ","A","r","e"," ","H","a","c","k","e","d"];
-        //var $letters = ["S","t","a","c","k","f","i","n","d","o","v","e","r"];
-
-        $randomString.each(function(){
-            $change = Math.round(Math.random()*100);
-            $(this).attr('data-change', $change)
-        });
-
-        function random(){
-            return Math.round(Math.random()*9);
+            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                rainDrops[i] = 0;
+            }
+            rainDrops[i]++;
         }
-        function select(){
-            return Math.round(Math.random()*$randomString.length+1);
-        }
+    };
 
-        function value(){
-            $(".str:nth-child("+select()+")").html(''+random()+'');
-            $(".str:nth-child("+select()+")").attr('data-number', $data);
-            $data++;
+    setInterval(draw, 30);
 
-            $randomString.each(function(){
-                if (parseInt($(this).attr('data-number')) > parseInt($(this).attr('data-change')) ) {
-                    $index = $('.ltr').index(this);
-                    $(this).html($letters[$index]);
-                    $(this).removeClass('str');
-                }
-            });
 
-        };
+    //time function
 
-        $it = setInterval(value, $timer);
+    function updateTime() {
+        // Get current time
+        var currentTime = new Date();
+        // Format time as desired, for example: HH:MM:SS
+        var formattedTime = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
+        // Update the content of the HTML element
+        document.getElementById('current-time').innerHTML = formattedTime;
+    }
+    // Call the function once to display time immediately
+    updateTime();
+    // Update time every second (1000 milliseconds)
+    setInterval(updateTime, 1000);
 
-    });
+
+
+
+
+
+
 
 </script>
-
-
-
-
-
-
-
 
 
 
