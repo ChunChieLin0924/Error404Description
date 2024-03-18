@@ -38,7 +38,7 @@
         top: 10px;
         background-color: rgba(56, 56, 56, 0.77);
         font-size: x-large;
-        color:chartreuse;
+        color: rgba(127, 255, 0, 0.84);
 
     }
 </style>
@@ -58,7 +58,20 @@
 
 <div id="wrapper">
     <div class="innerDiv">
-        <span>This is an title example:</span>
+
+
+<!--        add current time-->
+        <div id="counter" style="color: rgba(127, 255, 0, 0.84); text-align: center ;" >
+            <p>
+                現在時間 PRESENT TIME :
+            </p>
+            <p id="current-time"></p>
+        </div>
+
+
+
+
+        <span> 設計理念Inspiration</span>
         <br/>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
@@ -84,6 +97,9 @@
 
 
 <script>
+
+
+    //matrix function
     const canvas = document.getElementById('Matrix');
     const context = canvas.getContext('2d');
 
@@ -124,6 +140,30 @@
     };
 
     setInterval(draw, 30);
+
+
+    //time function
+
+    function updateTime() {
+        // Get current time
+        var currentTime = new Date();
+        // Format time as desired, for example: HH:MM:SS
+        var formattedTime = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
+        // Update the content of the HTML element
+        document.getElementById('current-time').innerHTML = formattedTime;
+    }
+    // Call the function once to display time immediately
+    updateTime();
+    // Update time every second (1000 milliseconds)
+    setInterval(updateTime, 1000);
+
+
+
+
+
+
+
+
 </script>
 
 
